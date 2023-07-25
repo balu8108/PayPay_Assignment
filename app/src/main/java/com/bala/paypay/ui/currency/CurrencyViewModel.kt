@@ -1,5 +1,6 @@
 package com.bala.paypay.ui.currency
 
+import androidx.annotation.VisibleForTesting
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.viewModelScope
 import com.bala.paypay.BuildConfig
@@ -85,7 +86,8 @@ class CurrencyViewModel @ViewModelInject constructor(
         }
     }
 
-    private suspend fun fetchCurrency() {
+    @VisibleForTesting
+    suspend fun fetchCurrency() {
         if (networkHelper.isNetworkConnected()) {
             currencyRepository.getAndInsertCurrencyies(
                 BuildConfig.APIKEY
